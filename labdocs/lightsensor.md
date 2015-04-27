@@ -61,31 +61,31 @@ The next thing to do is to set up the device in JavaScript and start talking to 
 1. Create a file called `lightsensor.js`. 
 2. Type in your requires. The things that are listed here are the things that this file has access to. This should match what's in your package.json file. 
 
-        ```
-        var five = require("johnny-five");
-        ```
+    ```
+    var five = require("johnny-five");
+    ```
 
 3. Now let's fill out your board initialization
 
     Please refer to the [Running Johnny-Five](./runningjohnnyfive.md) to make sure you are connecting properly for your platform.  
 
-        ```
-        var board = new five.Board();
+    ```
+    var board = new five.Board();
 
-        board.on("ready", function(){
-          console.log("Board connected...");
+    board.on("ready", function(){
+      console.log("Board connected...");
 
-          var light = new five.Sensor("A0");
+      var light = new five.Sensor("A0");
 
-          light.on("change", function() {
-            var lightValue = Math.round(this.value * .1);
+      light.on("change", function() {
+        var lightValue = Math.round(this.value * .1);
 
-            //JOSH - check console.write
-            console.write("Light is @ " + lightValue + "%");
-          });      
-        });
-        ```
-    
+        //JOSH - check console.write
+        console.write("Light is @ " + lightValue + "%");
+      });      
+    });
+    ```
+
 ## Running your device
 
 At this point you can run the app and start your device. The Johnny-Five app will connect to the standard firmata that's on the device and start sending it commands. 
